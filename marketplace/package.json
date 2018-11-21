@@ -1,0 +1,18 @@
+{
+  "name": "marketplace-example",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "author": "@nrt3",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "0.18.0",
+    "koa": "2.5.3",
+    "koa-handlebars": "2.0.0",
+    "koa-router": "7.4.0",
+    "koa-static": "5.0.0",
+    "ws": "6.0.0"
+  }
+}

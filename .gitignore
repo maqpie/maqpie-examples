@@ -59,3 +59,12 @@ typings/
 
 # next.js build output
 .next
+
+.idea
+*.log
+credentials.yml
+.DS_Store
+uploads
+ssl
+logs
+gradle_deps.lock

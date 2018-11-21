@@ -1,0 +1,140 @@
+<html>
+<head>
+  <title>Maqpie example</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="blur header__element"></div>
+    <div class="blur header__element"></div>
+    <div class="blur header__element"></div>
+    <div class="blur header__element"></div>
+    <div class="notifications__wrap">
+      <div class="notifications__indicator" id="indicator" style="display: none"></div>
+    </div>
+    <div class="header__notif" id="bell">
+      <svg viewBox="0 0 24 24">
+        <path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" />
+      </svg>
+    </div>
+    <div class="notifications__wrap">
+      <menu id="notifications" style="display: none" class="notifications">
+        <span class="no-notifications" id="no-notifications">No avalible notifications</span>
+        <div id="notification" class="notification" style="display: none">
+          <div class="notification__row">
+            <img class="notification__user-avatar" src="./jane_avatar.jpeg" />
+            <span class="notification__text">Jane wants to add you to her contact list</span>
+          </div>
+          <div class="notification__row notification__row--end">
+            <button id="acceptButton" class="notification__button">accept</button>
+          </div>
+        </div>
+      </menu>
+    </div>
+  </header>
+  <main class="main">
+    <article class="list">
+      <div class="blur list__element">
+        <div class="element__user-main-info">
+          <div class="element__user-fake-avatar"></div>
+          <div class="element__user-fake-text" style="width: 120px"></div>
+          <div class="element__user-fake-text" style="width: 100px"></div>
+        </div>
+        <div class="element__user-sub-info">
+          <div class="element__user-fake-text" style="margin-left: 0; width: 220px"></div>
+          <div class="element__user-fake-text" style="width: 60px"></div>
+        </div>
+        <button class="element__button">Add to contacts</button>
+      </div>
+      <div class="blur list__element">
+        <div class="element__user-main-info">
+          <div class="element__user-fake-avatar"></div>
+          <div class="element__user-fake-text" style="width: 120px"></div>
+          <div class="element__user-fake-text" style="width: 100px"></div>
+        </div>
+        <div class="element__user-sub-info">
+          <div class="element__user-fake-text" style="margin-left: 0; width: 220px"></div>
+          <div class="element__user-fake-text" style="width: 60px"></div>
+        </div>
+        <button class="element__button">Add to contacts</button>
+      </div>
+      <div class="blur list__element">
+        <div class="element__user-main-info">
+          <div class="element__user-fake-avatar"></div>
+          <div class="element__user-fake-text" style="width: 120px"></div>
+          <div class="element__user-fake-text" style="width: 100px"></div>
+        </div>
+        <div class="element__user-sub-info">
+          <div class="element__user-fake-text" style="margin-left: 0; width: 220px"></div>
+          <div class="element__user-fake-text" style="width: 60px"></div>
+        </div>
+        <button class="element__button">Add to contacts</button>
+      </div>
+      <div class="blur list__element">
+        <div class="element__user-main-info">
+          <div class="element__user-fake-avatar"></div>
+          <div class="element__user-fake-text" style="width: 120px"></div>
+          <div class="element__user-fake-text" style="width: 100px"></div>
+        </div>
+        <div class="element__user-sub-info">
+          <div class="element__user-fake-text" style="margin-left: 0; width: 220px"></div>
+          <div class="element__user-fake-text" style="width: 60px"></div>
+        </div>
+        <button class="element__button">Add to contacts</button>
+      </div>
+    </article>
+    <aside class="blur aside" />
+    <script>
+      var MP = {
+        data: {
+          appId: "{{appId}}",
+          user: {
+            userId: "{{user.vendorId}}",
+            username: "{{user.username}}",
+            firstName: "{{user.firstName}}",
+            lastName: "{{user.lastName}}",
+            email: "{{user.email}}",
+            avatarUrl: "{{user.avatarUrl}}",
+          },
+          userHash: "{{user.hash}}",
+        },
+      }
+    </script>
+    <script>(function(){var l=function(){var d=document;var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.maqpie.com/widget/v1.0';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);};var w=window;w.MP._queue=w.MP._queue || [];var m=['renderLargeView','showLargeView','destroyLargeView','subscribe','unsubscribe'];var f=function(method){return function(){var args = Array.prototype.slice.call(arguments);args.unshift(method);w.MP._queue.push(args);}};for(var i = 0;i < m.length;i += 1){w.MP[m[i]] = f(m[i]);} if(w.attachEvent){w.attachEvent('onload', l)}else{w.addEventListener('load', l, false)}}())</script></body>
+    <script>
+      const ws = new WebSocket('ws://localhost:3001');
+      const notifications = document.querySelector('#notifications');
+      const bell = document.querySelector('#bell');
+      const indicator = document.querySelector('#indicator');
+      const acceptButton = document.querySelector('#acceptButton');
+      ws.onmessage = ({ data }) => {
+        const pData = JSON.parse(data);
+        switch (pData.type) {
+          case 'contactOffer':
+            const noNotifications = document.querySelector('#no-notifications');
+            noNotifications.style.display = 'none';
+            const notification = document.querySelector('#notification');
+            notification.style.display = 'block';
+            if (notifications.style.display === 'none') {
+              indicator.style.display = 'block';
+            }
+            break;
+          default:
+            break;
+        }
+      };
+      ws.onopen = () => {
+        ws.send(JSON.stringify({ type: 'init', user: 'john' }));
+      };
+      bell.onclick = () => {
+        notifications.style.display = notifications.style.display === 'block' ? 'none' : 'block';
+        indicator.style.display = 'none';
+      };
+      acceptButton.onclick = () => {
+        ws.send(JSON.stringify({ type: 'offerAccepted' }));
+        acceptButton.disabled = true;
+        acceptButton.innerText = 'accepted';
+      };
+    </script>
+</html>

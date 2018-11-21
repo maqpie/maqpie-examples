@@ -1,0 +1,208 @@
+body {
+  padding: 0;
+  width: 900px;
+  margin: 0 auto;
+  background-color: #d0f0fc;
+  font-family: Open Sans,sans-serif;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.blur {
+  filter: blur(5px);
+}
+
+.header {
+  padding: 10px 0 0 0;
+  display: flex;
+}
+
+.header__element {
+  height: 35px;
+  width: 200px;
+  background-color: #3dc8fa;
+  margin-right: 15px;
+}
+
+.header__notif {
+  height: 35px;
+  padding: 5px 5px 5px 0;
+  cursor: pointer;
+}
+
+.header__notif svg {
+  fill: #3dc8fa;
+  width: 24px;
+  height: 24px;
+}
+
+.main {
+  display: flex;
+}
+
+.list {
+  width: 600px;
+}
+
+.list__element {
+  width: 100%;
+  background-color: #add7e6;
+  margin-right: 15px;
+  margin-top: 20px;
+  padding: 18px;
+}
+
+.aside {
+  height: 584px;
+  width: 230px;
+  background-color: #aee2f5;
+  margin: 20px 0 0 15px;
+}
+
+.element__user-main-info {
+  display: flex;
+}
+
+.element__user-sub-info {
+  margin-top: 10px;
+  display: flex;
+}
+
+.element__user-fake-avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.element__user-fake-text {
+  height: 20px;
+  margin: 5px 0 5px 8px;
+  background-color: #525557;
+}
+
+.element__user-text {
+  color: #525557;
+  line-height: 30px;
+  margin-left: 5px;
+}
+
+.element__user-avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.element__button {
+  background-color: #add7e6;
+  margin: 0;
+  border: 0;
+  border-radius: 4px;
+  color: #e2f6ff;
+  outline: 0;
+  margin-top: 5px;
+  height: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.element__button:hover {
+  text-decoration: underline;
+}
+
+.element__button:disabled {
+  color: gray;
+  cursor: default;
+  pointer-events: none;
+}
+
+.notifications__wrap {
+  height: 0;
+  width: 0;
+}
+
+.notifications {
+  background-color: #d0ccda;
+  position: relative;
+  width: 240px;
+  left: -240px;
+  top: 29px;
+  box-shadow: 0px 2px 13px;
+  z-index: 1;
+  border-radius: 2px;
+  min-height: 60px;
+  max-height: 300px;
+  padding: 0;
+}
+
+.notifications__indicator {
+  position: relative;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: red;
+  top: 5px;
+  left: 14px;
+}
+
+.notification__user-avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.notification {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.notification__row {
+  display: flex;
+  align-items: center;
+}
+
+.notification__row--end {
+  justify-content: flex-end;
+}
+
+.notification__text {
+  font-size: 14px;
+  line-height: 16px;
+  padding-left: 6px;
+}
+
+.notification__button {
+  background-color: #d0ccda;
+  margin: 0;
+  border: 0;
+  border-radius: 4px;
+  color: #c8ff00;
+  outline: 0;
+  margin-top: 5px;
+  height: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.notification__button:hover {
+  text-decoration: underline;
+}
+
+.notification__button:disabled {
+  color: gray;
+  cursor: default;
+  pointer-events: none;
+}
+
+.no-notifications {
+  line-height: 60px;
+  text-align: center;
+  display: block;
+}
+
+#maqpie-widget-container {
+  height: 0;
+}
